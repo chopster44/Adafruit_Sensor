@@ -1,5 +1,11 @@
 # Adafruit Unified Sensor Driver #
+## My Modifications #
 
+I have a project which needs the Adafruit Sensor libraries and the esp32_camera library. I found that they cannot work together because they both use a type called `sensor_t`, so in the Adafruit libraries I have replaced it with `adafruit_sensor_t`. I have also modified:
+- [Adafruit_BME280_Library]()
+- [Adafruit_MMC56x3]()
+
+***
 Many small embedded systems exist to collect data from sensors, analyse the data, and either take an appropriate action or send that sensor data to another system for processing.
 
 One of the many challenges of embedded systems design is the fact that parts you used today may be out of production tomorrow, or system requirements may change and you may need to choose a different sensor down the road.
@@ -92,7 +98,7 @@ typedef enum
 } sensors_type_t;
 ```
 
-## Sensor Details (`sensor_t`)
+## Sensor Details (`adafruit_sensor_t`)
 
 This typedef describes the specific capabilities of this sensor, and allows us to know what sensor we are using beneath the abstraction layer.
 
@@ -109,7 +115,7 @@ typedef struct
     float    min_value;
     float    resolution;
     int32_t  min_delay;
-} sensor_t;
+} adafruit_sensor_t;
 ```
 
 The individual fields are intended to be used as follows:
@@ -187,7 +193,7 @@ bool getEvent(sensors_event_t*);
 Calling this function will populate the supplied sensors\_event\_t reference with the latest available sensor data.  You should call this function as often as you want to update your data.
 
 ```c++
-void getSensor(sensor_t*);
+void getSensor(adafruit_sensor_t*);
 ```
 Calling this function will provide some basic information about the sensor (the sensor name, driver version, min and max values, etc.
 
@@ -253,9 +259,9 @@ An example of reading the [TSL2561](https://github.com/adafruit/Adafruit_TSL2561
 Similarly, we can get the basic technical capabilities of this sensor with the following code:
 
 ```c++
- sensor_t sensor;
+ adafruit_sensor_t sensor;
  
- sensor_t sensor;
+ adafruit_sensor_t sensor;
  tsl.getSensor(&sensor);
 
  /* Display the sensor details */
