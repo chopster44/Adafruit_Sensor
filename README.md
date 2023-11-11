@@ -2,8 +2,8 @@
 ## My Modifications #
 
 I have a project which needs the Adafruit Sensor libraries and the esp32_camera library. I found that they cannot work together because they both use a type called `sensor_t`, so in the Adafruit libraries I have replaced it with `adafruit_sensor_t`. I have also modified:
-- [Adafruit_BME280_Library]()
-- [Adafruit_MMC56x3]()
+- [Adafruit_BME280_Library](https://github.com/chopster44/Adafruit_BME280_Library)
+- [Adafruit_MMC56x3](https://github.com/chopster44/Adafruit_MMC56x3)
 
 ***
 Many small embedded systems exist to collect data from sensors, analyse the data, and either take an appropriate action or send that sensor data to another system for processing.
