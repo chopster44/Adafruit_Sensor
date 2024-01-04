@@ -1,4 +1,7 @@
 # Adafruit Unified Sensor Driver #
+## Archive note
+I have archived this because it was replaced in the project I was using it for. And the reason for the fork was a very obscure issue.
+
 ## My Modifications #
 
 I have a project which needs the Adafruit Sensor libraries and the esp32_camera library. I found that they cannot work together because they both use a type called `sensor_t`, so in the Adafruit libraries I have replaced it with `adafruit_sensor_t`. I have also modified:
